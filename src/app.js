@@ -1,20 +1,10 @@
-const express = require('express');
+const express = require("express");
+const authRouter = require("./routers/auth");
 
 const app = express();
+app.use(express.json());
 
-app.use("/", (req, res) => {
-    res.send("Hello from the server");
-});
-
-app.use("/hello", (req, res) => {
-    res.send("Hello hello hello");
-});
-
-app.use("/Bye", (req, res) => {
-    res.send("Bye from the server");
-});
+app.use("/", authRouter);
 
 
-app.listen(3001, () => {
-    console.log("Server is running on port 3001....");
-});
+module.exports = { app };
